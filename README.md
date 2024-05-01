@@ -62,6 +62,15 @@ The experiment is hyperparameterized by the following conditions.
   This hyperparameter is represented by the command line argument `-m`.
 - **Number of Trials:** The number of trials of the experiment to run, represented by the command line argument `-nt`.
 - **Training Condition:** Represented by the command line argument `-train`, this hyperparameter determines how 
-  training data for the linear-SVM probe in the Training step will be obtained. 
+  training data for the linear-SVM probe in the Training step will be obtained. Options are:
+    - `subj`: Estimate the number space from subject vectors.
+    - `mask`: Estimate the number space from `[MASK]` vectors.
+    - `is_are`: Estimate the number space from vectors for the main verb (_is_ or _are_).
+    - `random`: Use a random basis for the number space.
 - **Testing Condition:** Represented by the command line argument `-test`, this hyperparameter determines which 
-  positions of the input sequence will undergo causal intervention during the Testing step.
+  positions of the input sequence will undergo causal intervention during the Testing step. Options are:
+    - `local`: Use local invervention.
+    - `global`: Use global intervention.
+    - `verb`: Apply intervention to the main subject and the embedded verb.
+    - `mask`: Apply intervention to `[MASK]`.
+    - `control`: Apply intervention to number-neutral words and measure its effect on perplexity.
